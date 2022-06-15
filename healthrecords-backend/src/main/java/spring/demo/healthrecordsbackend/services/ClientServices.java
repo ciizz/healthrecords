@@ -14,11 +14,11 @@ import java.util.Optional;
 public class ClientServices {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
     @Autowired
-    ClientRepository clientRepository;
+    private ClientRepository clientRepository;
     @Autowired
-    AdminRepository adminRepository;
+    private AdminRepository adminRepository;
 
 
     public Client createClient(String aFirstName,
@@ -49,8 +49,7 @@ public class ClientServices {
         return client;
     }
 
-    public Optional<Client> getClientInfo(long id) {
-        Optional<Client> client = clientRepository.findById(id);
-        return client;
+    public Client getClientInfo(long id) {
+        return clientRepository.findClientById(id);
     }
 }

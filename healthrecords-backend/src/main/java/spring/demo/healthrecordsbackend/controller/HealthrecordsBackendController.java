@@ -46,7 +46,7 @@ public class HealthrecordsBackendController {
     }
 
     @GetMapping("/client")
-    public Optional<Client> getClientLastName(@RequestParam int id) {
+    public Client getClientInfo(@RequestParam int id) {
         return clientServices.getClientInfo(id);
     }
 
