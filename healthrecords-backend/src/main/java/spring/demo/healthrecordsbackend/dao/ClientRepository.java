@@ -5,6 +5,6 @@ import spring.demo.healthrecordsbackend.model.Client;
 
 public interface ClientRepository extends MongoRepository<Client, Long> {
 
-//    Client findClientById(long id);
+    Client findClientById(long id);
 
 }
