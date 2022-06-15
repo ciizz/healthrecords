@@ -3,6 +3,7 @@ import APIService from "../REST/APIService";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
+import { Link } from "react-router-dom";
 
 
 export function ClientInfo(props) {
@@ -17,6 +18,10 @@ export function ClientInfo(props) {
     const [allergies, setAllergies] = useState(false);
     const [diabetes, setDiabetes] = useState(false);
     const [highBloodPressure, setHighBloodPressure] = useState(false);
+
+    // if (props.id !== '') (
+    //     setClientId(props.id)
+    // )
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,7 +40,6 @@ export function ClientInfo(props) {
         }
     }
     
-    console.log(invalidClientId);
     if (firstName === '' && lastName === '') {
         return (
             <div>
@@ -55,6 +59,20 @@ export function ClientInfo(props) {
                         Submit
                     </Button>
                 </Form>
+                
+                <br/>
+
+                <h4>OR</h4>
+
+                <br/>
+
+                <div id="create-new-client">
+                    <Link to="/newclient">
+                        <button variant="outlined">
+                            Create New Client
+                        </button>
+                    </Link>
+                </div>
             </div>
         );
     } 
