@@ -1,2 +1,4 @@
-
+.DS_Store
+healthrecords-backend/.DS_Store
+healthrecords-backend/src/.DS_Store
 healthrecords-backend/src/main/resources/application.properties

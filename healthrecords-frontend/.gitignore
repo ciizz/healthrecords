@@ -21,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.DS_Store
+	healthrecords-backend/.DS_Store
+	healthrecords-backend/src/.DS_Store
