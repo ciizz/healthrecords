@@ -39,6 +39,7 @@ export function ClientInfo(props) {
             setAllergies(clientInfo.allergies);
             setDiabetes(clientInfo.diabetes);
             setHighBloodPressure(clientInfo.highBloodPressure);
+            setIsLoading(false);
         }
     }
     

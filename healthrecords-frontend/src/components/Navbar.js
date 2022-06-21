@@ -7,12 +7,12 @@ export function Navbar() {
                 <table>
                 <tbody>
                     <tr>
-                    <th style={{color: "white", verticalAlign: "middle", }}>
-                        Personal Health Records
-                    </th>
-                    <th>
-                        <img src={logo} className="App-logo" alt="logo" />
-                    </th>
+                        <th>
+                            <img src={logo} className="App-logo" alt="logo" />
+                        </th>
+                        <th style={{color: "white", verticalAlign: "middle", }}>
+                            Personal Health Records
+                        </th>
                     </tr>
                 </tbody>
                 </table>
