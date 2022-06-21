@@ -21,17 +21,20 @@ public class ClientServices {
     private AdminRepository adminRepository;
 
 
+    public Client getClientInfo(long id) {
+        return clientRepository.findClientById(id);
+    }
+
     public Client createClient(String aFirstName,
                                String aLastName,
                                String aDob,
                                String aDoctorFirstName,
                                String aDoctorLastName,
-                               int aDoctorPhoneNumber,
+                               long aDoctorPhoneNumber,
                                boolean aAllergies,
                                boolean aDiabetes,
                                boolean aHighBloodPressure) {
 
-//        long id = NextSequenceService.getNextSequence("customSequences");
         long id = clientRepository.count();
         Client client = new Client(
                 id,
@@ -49,7 +52,23 @@ public class ClientServices {
         return client;
     }
 
-    public Client getClientInfo(long id) {
-        return clientRepository.findClientById(id);
+    public Client updateClient(long id,
+                               String doctorFirstName,
+                               String doctorLastName,
+                               long doctorPhoneNumber,
+                               boolean hasAllergies,
+                               boolean hasDiabetes,
+                               boolean hasHighBloodPressure) {
+        Client client = clientRepository.findClientById(id);
+        clientRepository.delete(client);
+        if (client == null) throw new IllegalArgumentException("Invalid client ID");
+        client.setDoctorFirstName(doctorFirstName);
+        client.setDoctorLastName(doctorLastName);
+        client.setDoctorPhoneNumber(doctorPhoneNumber);
+        client.setAllergies(hasAllergies);
+        client.setDiabetes(hasDiabetes);
+        client.setHighBloodPressure(hasHighBloodPressure);
+        Client updatedClient = clientRepository.save(client);
+        return updatedClient;
     }
 }

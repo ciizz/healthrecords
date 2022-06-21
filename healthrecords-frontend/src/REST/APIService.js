@@ -33,6 +33,27 @@ class APIService {
                 '&highBloodPressure=' + highBloodPressure);
             return res.data;
     }
+
+    async updateClientInfo(
+        clientId,
+        doctorFirstName,
+        doctorLastName,
+        doctorPhoneNumber,
+        allergies,
+        diabetes,
+        highBloodPressure) {
+            let res = await axios.put(
+                HEALTHRECORDS_dev_API_REST_URL +
+                '/edit?' +
+                'id=' + clientId +
+                '&doctorFirstName=' + doctorFirstName +
+                '&doctorLastName=' + doctorLastName +
+                '&doctorPhoneNumber=' + doctorPhoneNumber +
+                '&allergies=' + allergies +
+                '&diabetes=' + diabetes +
+                '&highBloodPressure=' + highBloodPressure);
+            return res.data;
+        }
     
 }
 

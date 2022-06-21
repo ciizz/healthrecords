@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import APIService from "../REST/APIService";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -18,13 +18,11 @@ export function ClientInfo(props) {
     const [allergies, setAllergies] = useState(false);
     const [diabetes, setDiabetes] = useState(false);
     const [highBloodPressure, setHighBloodPressure] = useState(false);
-
-    // if (props.id !== '') (
-    //     setClientId(props.id)
-    // )
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
         let clientInfo = await APIService.getClientInfo(clientId);
         if (clientInfo === '') { // invalid id input
             setInvalidClientId(true);
@@ -37,6 +35,7 @@ export function ClientInfo(props) {
             setAllergies(clientInfo.allergies);
             setDiabetes(clientInfo.diabetes);
             setHighBloodPressure(clientInfo.highBloodPressure);
+            setIsLoading(false);
         }
     }
     
@@ -78,59 +77,73 @@ export function ClientInfo(props) {
     } 
 
     return (
-        <div>
-            <h1>Hi, {firstName}.</h1>
-            <h3>Here is the information we currently have on you in your file: </h3>
-            <Table striped bordered hover variant="dark" align="center">
-                <thead>
-                    <tr>
-                    <th>Client ID: {clientId}</th>
-                    <th colSpan={2}>{firstName}</th>
-                    <th>{lastName}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>DOB</td>
-                        <td colSpan={3}>{dob}</td>
-                    </tr>
-                    <tr>
-                        <td>Doctor Name:</td>
-                        <td colSpan={3}>{doctorFullName}</td>
-                    </tr>
-                    <tr>
-                        <td>Doctor Number</td>
-                        <td colSpan={3}>{doctorPhoneNumber}</td>
-                    </tr>
-                    <tr>
-                        <td>Allergies</td>
-                        {allergies === true &&
-                            <td colSpan={3}>Yes</td>
-                        }
-                        {allergies === false &&
-                            <td colSpan={3}>No</td>
-                        }
-                    </tr>
-                    <tr>
-                        <td>Diabetes</td>
-                        {diabetes === true &&
-                            <td colSpan={3}>Yes</td>
-                        }
-                        {diabetes === false &&
-                            <td colSpan={3}>No</td>
-                        }
-                    </tr>
-                    <tr>
-                        <td>High Blood Pressure</td>
-                        {highBloodPressure === true &&
-                            <td colSpan={3}>Yes</td>
-                        }
-                        {highBloodPressure === false &&
-                            <td colSpan={3}>No</td>
-                        }
-                    </tr>
-                </tbody>
-            </Table>
-        </div>
+        // if isLoading is set to true, then return the loading spinner
+        isLoading ?
+            <div className="spinner-border text-primary" role="status">
+                <span className="sr-only">Loading...</span>
+            </div>
+            :
+            <div>
+                <h1>Hi, {firstName}.</h1>
+                <h3>Here is the information we currently have on you in your file: </h3>
+                <Table striped bordered hover variant="dark" align="center">
+                    <thead>
+                        <tr>
+                        <th>Client ID: {clientId}</th>
+                        <th colSpan={2}>{firstName}</th>
+                        <th>{lastName}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>DOB:</td>
+                            <td colSpan={3}>{dob}</td>
+                        </tr>
+                        <tr>
+                            <td>Doctor Name:</td>
+                            <td colSpan={3}>{doctorFullName}</td>
+                        </tr>
+                        <tr>
+                            <td>Doctor Number:</td>
+                            <td colSpan={3}>{doctorPhoneNumber}</td>
+                        </tr>
+                        <tr>
+                            <td>Allergies:</td>
+                            {allergies === true &&
+                                <td colSpan={3}>Yes</td>
+                            }
+                            {allergies === false &&
+                                <td colSpan={3}>No</td>
+                            }
+                        </tr>
+                        <tr>
+                            <td>Diabetes:</td>
+                            {diabetes === true &&
+                                <td colSpan={3}>Yes</td>
+                            }
+                            {diabetes === false &&
+                                <td colSpan={3}>No</td>
+                            }
+                        </tr>
+                        <tr>
+                            <td>High Blood Pressure:</td>
+                            {highBloodPressure === true &&
+                                <td colSpan={3}>Yes</td>
+                            }
+                            {highBloodPressure === false &&
+                                <td colSpan={3}>No</td>
+                            }
+                        </tr>
+                    </tbody>
+                </Table>
+                <br/>
+                <div id="edit-client">
+                    <Link to={`/edit/${clientId}`}>
+                        <button variant="outlined">
+                            Edit Client Info
+                        </button>
+                    </Link>
+                </div>
+            </div>
     );
 }
