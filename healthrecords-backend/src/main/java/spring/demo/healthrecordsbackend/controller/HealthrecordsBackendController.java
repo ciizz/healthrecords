@@ -27,7 +27,7 @@ public class HealthrecordsBackendController {
                                   String dob,
                                   String doctorFirstName,
                                   String doctorLastName,
-                                  int doctorPhoneNumber,
+                                  long doctorPhoneNumber,
                                   boolean allergies,
                                   boolean diabetes,
                                   boolean highBloodPressure){

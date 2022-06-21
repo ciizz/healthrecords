@@ -26,7 +26,7 @@ public class ClientServices {
                                String aDob,
                                String aDoctorFirstName,
                                String aDoctorLastName,
-                               int aDoctorPhoneNumber,
+                               long aDoctorPhoneNumber,
                                boolean aAllergies,
                                boolean aDiabetes,
                                boolean aHighBloodPressure) {
