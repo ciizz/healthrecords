@@ -20,6 +20,10 @@ public class HealthrecordsBackendController {
         return "Greetings from Spring Boot!";
     }
 
+    @GetMapping("/client")
+    public Client getClientInfo(@RequestParam int id) {
+        return clientServices.getClientInfo(id);
+    }
 
     @PostMapping("/newclient")
     public Client createNewClient(@RequestParam String firstName,
@@ -45,9 +49,37 @@ public class HealthrecordsBackendController {
         return client;
     }
 
-    @GetMapping("/client")
-    public Client getClientInfo(@RequestParam int id) {
-        return clientServices.getClientInfo(id);
+//    @PutMapping("/edit")
+//    public Client updateClient(@PathVariable("id") int clientId, @RequestBody Client client) {
+//        Client c = clientServices.updateClient(
+//                clientId,
+//                client.getDoctorFirstName(),
+//                client.getDoctorLastName(),
+//                client.getDoctorPhoneNumber(),
+//                client.getAllergies(),
+//                client.getDiabetes(),
+//                client.getHighBloodPressure());
+//        return c;
+//    }
+
+    @PutMapping("/edit")
+    public Client updateClient(@RequestParam long id,
+                               String doctorFirstName,
+                               String doctorLastName,
+                               long doctorPhoneNumber,
+                               boolean hasAllergies,
+                               boolean hasDiabetes,
+                               boolean hasHighBloodPressure) {
+        Client client = clientServices.updateClient(
+                id,
+                doctorFirstName,
+                doctorLastName,
+                doctorPhoneNumber,
+                hasAllergies,
+                hasDiabetes,
+                hasHighBloodPressure);
+
+        return client;
     }
 
 }

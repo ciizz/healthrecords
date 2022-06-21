@@ -140,6 +140,14 @@ export function ClientInfo(props) {
                         </tr>
                     </tbody>
                 </Table>
+                <br/>
+                <div id="edit-client">
+                    <Link to={`/edit/${clientId}`}>
+                        <button variant="outlined">
+                            Edit Client Info
+                        </button>
+                    </Link>
+                </div>
             </div>
     );
 }
