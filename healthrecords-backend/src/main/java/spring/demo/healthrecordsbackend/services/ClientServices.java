@@ -61,7 +61,6 @@ public class ClientServices {
                                boolean hasHighBloodPressure) {
         Client client = clientRepository.findClientById(id);
         clientRepository.delete(client);
-        System.out.println(client.getDoctorFirstName());
         if (client == null) throw new IllegalArgumentException("Invalid client ID");
         client.setDoctorFirstName(doctorFirstName);
         client.setDoctorLastName(doctorLastName);

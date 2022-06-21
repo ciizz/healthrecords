@@ -67,17 +67,18 @@ public class HealthrecordsBackendController {
                                String doctorFirstName,
                                String doctorLastName,
                                long doctorPhoneNumber,
-                               boolean hasAllergies,
-                               boolean hasDiabetes,
-                               boolean hasHighBloodPressure) {
+                               boolean allergies,
+                               boolean diabetes,
+                               boolean highBloodPressure) {
+        System.out.println(diabetes);
         Client client = clientServices.updateClient(
                 id,
                 doctorFirstName,
                 doctorLastName,
                 doctorPhoneNumber,
-                hasAllergies,
-                hasDiabetes,
-                hasHighBloodPressure);
+                allergies,
+                diabetes,
+                highBloodPressure);
 
         return client;
     }

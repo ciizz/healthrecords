@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import APIService from "../REST/APIService";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -19,10 +19,6 @@ export function ClientInfo(props) {
     const [diabetes, setDiabetes] = useState(false);
     const [highBloodPressure, setHighBloodPressure] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-
-    // if (props.id !== '') (
-    //     setClientId(props.id)
-    // )
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -100,7 +96,7 @@ export function ClientInfo(props) {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>DOB</td>
+                            <td>DOB:</td>
                             <td colSpan={3}>{dob}</td>
                         </tr>
                         <tr>
@@ -108,11 +104,11 @@ export function ClientInfo(props) {
                             <td colSpan={3}>{doctorFullName}</td>
                         </tr>
                         <tr>
-                            <td>Doctor Number</td>
+                            <td>Doctor Number:</td>
                             <td colSpan={3}>{doctorPhoneNumber}</td>
                         </tr>
                         <tr>
-                            <td>Allergies</td>
+                            <td>Allergies:</td>
                             {allergies === true &&
                                 <td colSpan={3}>Yes</td>
                             }
@@ -121,7 +117,7 @@ export function ClientInfo(props) {
                             }
                         </tr>
                         <tr>
-                            <td>Diabetes</td>
+                            <td>Diabetes:</td>
                             {diabetes === true &&
                                 <td colSpan={3}>Yes</td>
                             }
@@ -130,7 +126,7 @@ export function ClientInfo(props) {
                             }
                         </tr>
                         <tr>
-                            <td>High Blood Pressure</td>
+                            <td>High Blood Pressure:</td>
                             {highBloodPressure === true &&
                                 <td colSpan={3}>Yes</td>
                             }
