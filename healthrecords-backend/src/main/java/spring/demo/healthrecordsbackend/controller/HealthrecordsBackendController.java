@@ -49,19 +49,6 @@ public class HealthrecordsBackendController {
         return client;
     }
 
-//    @PutMapping("/edit")
-//    public Client updateClient(@PathVariable("id") int clientId, @RequestBody Client client) {
-//        Client c = clientServices.updateClient(
-//                clientId,
-//                client.getDoctorFirstName(),
-//                client.getDoctorLastName(),
-//                client.getDoctorPhoneNumber(),
-//                client.getAllergies(),
-//                client.getDiabetes(),
-//                client.getHighBloodPressure());
-//        return c;
-//    }
-
     @PutMapping("/edit")
     public Client updateClient(@RequestParam long id,
                                String doctorFirstName,
@@ -70,7 +57,6 @@ public class HealthrecordsBackendController {
                                boolean allergies,
                                boolean diabetes,
                                boolean highBloodPressure) {
-        System.out.println(diabetes);
         Client client = clientServices.updateClient(
                 id,
                 doctorFirstName,
