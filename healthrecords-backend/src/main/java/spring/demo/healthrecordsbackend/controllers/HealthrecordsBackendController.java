@@ -12,7 +12,6 @@ public class HealthrecordsBackendController {
     @Autowired
     private ClientServices clientServices;
 
-
     @GetMapping("/")
     public String index() {
         return "Greetings from Spring Boot!";
