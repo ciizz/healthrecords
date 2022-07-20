@@ -18,6 +18,8 @@ public class User
   //User Attributes
   @Id
   private long id;
+
+  private String password;
   private String firstName;
   private String lastName;
   private String dob;
@@ -38,10 +40,10 @@ public class User
   // INTERFACE
   //------------------------
 
-  public boolean setId(long aId)
-  {
+
+  public boolean setPassword(String password) {
     boolean wasSet = false;
-    id = aId;
+    this.password = password;
     wasSet = true;
     return wasSet;
   }

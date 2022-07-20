@@ -1,11 +1,9 @@
-package spring.demo.healthrecordsbackend.controller;
+package spring.demo.healthrecordsbackend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import spring.demo.healthrecordsbackend.model.Client;
 import spring.demo.healthrecordsbackend.services.ClientServices;
-
-import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
